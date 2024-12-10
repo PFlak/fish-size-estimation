@@ -16,12 +16,12 @@ from skeleton import skeleton
 DATA_IN_DIR = './data_in'
 DATA_OUT_DIR = './out'
 MRCNN_DIR = '../'
-TRAY_MODEL_DIR = '../ai_model/tray_model/out_model.h5'
-SEG_MODEL_DIR = '../ai_model/segmentation'
+TRAY_MODEL_DIR = './ai_model/tray_model/out_model.h5'
+SEG_MODEL_DIR = './ai_model/segmentation'
 
 HOMO_OUT_DIR = './homo_out'
 MODEL_DIR = '../ai_model/segmentation'
-MODEL_NAME = os.listdir(MODEL_DIR)[-1]
+MODEL_NAME = os.listdir(SEG_MODEL_DIR)[-1]
 
 MEAN_RATIO = 0.002
 MEAN_TRACE_WIDTH = 56
@@ -81,7 +81,7 @@ if __name__ == '__main__':
     homography = Homography(TRAY_MODEL_DIR)
     homography.load_model()
 
-    seg = segmentation.Segmentation(MODEL_DIR, MODEL_NAME)
+    seg = segmentation.Segmentation(SEG_MODEL_DIR, MODEL_NAME)
     seg.load_model()
 
     for img_name in os.listdir(os.path.join('./', 'data_in')):
